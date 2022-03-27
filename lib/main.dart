@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/next_page.dart';
 
 void main() => runApp(const MyApp());
 
@@ -28,6 +29,9 @@ class _CntState extends State<Cnt> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.cyan,
+      width: 200,
+      margin: EdgeInsets.only(top: 30),
       child: Column(
         children: [
           Text("$cnt"),
@@ -49,8 +53,7 @@ class TodoListPage extends StatelessWidget {
   const TodoListPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    var myName;
-    myName = 3000;
+    var myName = 30001;
     return Scaffold(
       appBar: AppBar(
         title: const Text('First App'),
@@ -61,6 +64,7 @@ class TodoListPage extends StatelessWidget {
             Text("mun=$myName"),
             Text("data"),
             Cnt(),
+            Pager(),
           ],
         ),
         // child: Text('リスト一覧画面!!!!'),
@@ -95,6 +99,27 @@ class TodoAddPage extends StatelessWidget {
           },
           child: Text('リスト追加画面（クリックで戻る）'),
         ),
+      ),
+    );
+  }
+}
+
+class Pager extends StatelessWidget {
+  const Pager({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: ElevatedButton(
+        child: Text('次へ'),
+        onPressed: () {
+          //ここに押したら反応する
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => NextPage(),
+              ));
+        },
       ),
     );
   }
