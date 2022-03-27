@@ -10,13 +10,25 @@ class NextPage extends StatelessWidget {
         title: Text('Second page'),
       ),
       body: Center(
-        child: ElevatedButton(
-          child: Text('戻る'),
-          onPressed: () {
-            //ここに押したら反応する
-            Navigator.pop(context);
-          },
+        child: Column(
+          children: [
+            Text('2つ目のページ'),
+            ElevatedButton(
+              child: Text('戻る'),
+              onPressed: () {
+                //ここに押したら反応する
+                Navigator.pop(context);
+              },
+            ),
+          ],
         ),
+        // child: ElevatedButton(
+        //   child: Text('戻る'),
+        //   onPressed: () {
+        //     //ここに押したら反応する
+        //     Navigator.pop(context);
+        //   },
+        // ),
       ),
     );
   }
