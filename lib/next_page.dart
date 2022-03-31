@@ -11,6 +11,7 @@ class NextPage extends StatelessWidget {
       ),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('2つ目のページ'),
             ElevatedButton(
@@ -20,15 +21,15 @@ class NextPage extends StatelessWidget {
                 Navigator.pop(context);
               },
             ),
+            Container(
+              height: 150,
+              width: 200,
+              color: Colors.black26,
+              child: const Text('data'),
+              padding: EdgeInsets.all(30.0),
+            ),
           ],
         ),
-        // child: ElevatedButton(
-        //   child: Text('戻る'),
-        //   onPressed: () {
-        //     //ここに押したら反応する
-        //     Navigator.pop(context);
-        //   },
-        // ),
       ),
     );
   }
