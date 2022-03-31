@@ -28,6 +28,14 @@ class NextPage extends StatelessWidget {
               child: const Text('data'),
               padding: EdgeInsets.all(30.0),
             ),
+            ListView(
+              shrinkWrap: true, //ListViewでこれないとColumnの中でリスト使えない
+              children: [
+                Text('Item 1'),
+                Text('Item 2'),
+                Text('Item 3'),
+              ],
+            ),
           ],
         ),
       ),
