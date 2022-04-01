@@ -36,6 +36,12 @@ class NextPage extends StatelessWidget {
                 Text('Item 3'),
               ],
             ),
+            ListView.builder(
+                shrinkWrap: true,
+                itemCount: 5,
+                itemBuilder: (BuildContext context, int index) {
+                  return Text(index.toString());
+                }),
           ],
         ),
       ),
