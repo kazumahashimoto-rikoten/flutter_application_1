@@ -5,8 +5,13 @@ class ListDemo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.lime,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('3ページ目'),
+      ),
+      body: Container(
+        color: Colors.lime,
+      ),
     );
   }
 }
