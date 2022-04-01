@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/list_demo.dart';
 
 class NextPage extends StatelessWidget {
   const NextPage({Key? key}) : super(key: key);
@@ -42,6 +43,16 @@ class NextPage extends StatelessWidget {
                 itemBuilder: (BuildContext context, int index) {
                   return Text(index.toString());
                 }),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ListDemo(),
+                    ));
+              },
+              child: Text('次へ'),
+            )
           ],
         ),
       ),
