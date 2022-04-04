@@ -7,36 +7,49 @@ class ListDemo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('3ページ目'),
+          title: const Text('3ページ目'),
         ),
         body: Center(
             child: Container(
-          // padding: EdgeInsets.symmetric(vertical: 20, horizontal: 13),
           height: 100,
           child: Card(
             elevation: 3,
             color: Colors.cyan,
             child: Container(
-              padding: EdgeInsets.symmetric(vertical: 15, horizontal: 13),
+              padding: EdgeInsets.only(left: 13, top: 15, right: 13),
               child: Row(
                 children: [
                   Container(
-                    color: Colors.black38,
+                    margin: EdgeInsets.only(bottom: 15),
                     height: 60,
                     width: 60,
+                    decoration: BoxDecoration(
+                      color: Colors.black38,
+                      borderRadius: BorderRadius.circular(5),
+                    ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 15,
                   ),
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         '井上研究室',
                         style: TextStyle(fontSize: 11),
                       ),
-                      Text(
-                        'プログラミング',
-                        style: TextStyle(fontSize: 17),
+                      Container(
+                        padding: const EdgeInsets.only(bottom: 5),
+                        height: 45,
+                        child: const FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text(
+                            'プログラミング',
+                            style: TextStyle(
+                              fontSize: 17,
+                            ),
+                          ),
+                        ),
                       ),
                       Row(
                         children: [
@@ -51,6 +64,9 @@ class ListDemo extends StatelessWidget {
                         ],
                       )
                     ],
+                  ),
+                  const SizedBox(
+                    width: 40,
                   ),
                 ],
               ),
