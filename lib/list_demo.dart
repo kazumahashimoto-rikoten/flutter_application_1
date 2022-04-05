@@ -27,21 +27,21 @@ class ListDemo extends StatelessWidget {
             child: ListView.builder(
               itemCount: 10,
               itemBuilder: (BuildContext context, int index) {
-                return ListCard();
+                return ListCard('ビジュアルで学ぶプログラミング');
               },
-            )
-            // Center(child: ListCard())
-            ));
+            )));
   }
 }
 
 class ListCard extends StatelessWidget {
-  const ListCard({Key? key}) : super(key: key);
+  // const ListCard({Key? key}) : super(key: key);
+  ListCard(this.plan_title);
+  final String plan_title;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 5, vertical: 6),
+      margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 6),
       height: 100,
       child: ElevatedButton(
         child: Container(
@@ -72,11 +72,11 @@ class ListCard extends StatelessWidget {
                     height: 45,
                     width: 200,
                     alignment: Alignment.centerLeft,
-                    child: const Text(
-                      'ビジュアルで学ぶプログラミング',
+                    child: Text(
+                      plan_title,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 15,
                       ),
                     ),
