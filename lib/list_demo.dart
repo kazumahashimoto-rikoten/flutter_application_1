@@ -55,13 +55,14 @@ class ListDemo extends StatelessWidget {
                           Container(
                             padding: const EdgeInsets.only(bottom: 5),
                             height: 45,
-                            child: const FittedBox(
-                              fit: BoxFit.scaleDown,
-                              child: Text(
-                                'プログラミング',
-                                style: TextStyle(
-                                  fontSize: 17,
-                                ),
+                            width: 200,
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              'ビジュアルで学ぶプログラミング',
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontSize: 15,
                               ),
                             ),
                           ),
@@ -92,9 +93,8 @@ class ListDemo extends StatelessWidget {
                           )
                         ],
                       ),
-                      const SizedBox(
-                        width: 40,
-                      ),
+                      Spacer(),
+                      Icon(Icons.bookmark_border)
                     ],
                   ),
                 ),
