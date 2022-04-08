@@ -27,7 +27,7 @@ class ListDemo extends StatelessWidget {
             child: ListView.builder(
               itemCount: 10,
               itemBuilder: (BuildContext context, int index) {
-                return ListCard('ビジュアルで学ぶプログラミング');
+                return ListCard('ビジュアルで学ぶプログラミング${index}');
               },
             )));
   }
@@ -128,5 +128,19 @@ class ListCard extends StatelessWidget {
         },
       ),
     );
+  }
+}
+
+class FavButton extends StatefulWidget {
+  const FavButton({Key? key}) : super(key: key);
+
+  @override
+  _FavButtonState createState() => _FavButtonState();
+}
+
+class _FavButtonState extends State<FavButton> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }
