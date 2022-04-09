@@ -45,7 +45,7 @@ class ListCard extends StatelessWidget {
       height: 100,
       child: ElevatedButton(
         child: Container(
-          padding: const EdgeInsets.only(top: 15, right: 13),
+          padding: const EdgeInsets.only(top: 15),
           child: Row(
             children: [
               Container(
@@ -109,7 +109,7 @@ class ListCard extends StatelessWidget {
                 ],
               ),
               Spacer(),
-              Icon(Icons.bookmark_border)
+              FavButton(),
             ],
           ),
         ),
@@ -139,8 +139,18 @@ class FavButton extends StatefulWidget {
 }
 
 class _FavButtonState extends State<FavButton> {
+  bool isChanged = false;
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return IconButton(
+      icon: Icon(
+        isChanged ? Icons.bookmark : Icons.bookmark_border,
+      ),
+      onPressed: () {
+        setState(() {
+          isChanged = !isChanged;
+        });
+      },
+    );
   }
 }
