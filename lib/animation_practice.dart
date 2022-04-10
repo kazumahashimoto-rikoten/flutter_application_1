@@ -12,6 +12,9 @@ class _AnimationPracticeState extends State<AnimationPractice> {
   double _hollinew = 50;
   double _holrightpos = 100;
   double _verlineh = 0;
+  double _endedtopup = 320;
+
+  int hollinedurtime = 1;
 
   void _onTap() {
     setState(() {
@@ -31,12 +34,14 @@ class _AnimationPracticeState extends State<AnimationPractice> {
           child: Stack(children: <Widget>[
         // 横ライン
         AnimatedPositioned(
-          top: 320,
+          top: _endedtopup,
           right: _holrightpos,
-          duration: Duration(seconds: 1),
+          duration: Duration(seconds: hollinedurtime),
           onEnd: () {
+            hollinedurtime = 2;
             setState(() {
-              _verlineh = 400;
+              _verlineh = 430;
+              _endedtopup = -150;
             });
           },
           child: AnimatedSize(
@@ -50,9 +55,10 @@ class _AnimationPracticeState extends State<AnimationPractice> {
           ),
         ),
         // 折り返し縦ライン
-        Positioned(
-          top: 320,
+        AnimatedPositioned(
+          top: _endedtopup,
           right: 200,
+          duration: Duration(seconds: hollinedurtime),
           child: AnimatedSize(
             duration: Duration(seconds: 2),
             child: Container(
@@ -62,7 +68,7 @@ class _AnimationPracticeState extends State<AnimationPractice> {
             ),
           ),
         ),
-        // ボックス
+        // 最初のボックス
         AnimatedPositioned(
           top: 280,
           left: _boxleftpos,
@@ -72,7 +78,18 @@ class _AnimationPracticeState extends State<AnimationPractice> {
             height: 100,
             color: Colors.blueAccent,
           ),
-        )
+        ),
+        // 出てくるボックス
+        AnimatedPositioned(
+          top: _endedtopup + 430,
+          right: 100,
+          duration: Duration(seconds: 2),
+          child: Container(
+            width: 200,
+            height: 150,
+            color: Colors.blueAccent,
+          ),
+        ),
       ])),
       floatingActionButton: FloatingActionButton(onPressed: _onTap),
     );
