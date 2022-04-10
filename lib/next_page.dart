@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/animation_practice.dart';
 import 'package:flutter_application_1/list_demo.dart';
 
 class NextPage extends StatelessWidget {
@@ -51,8 +52,16 @@ class NextPage extends StatelessWidget {
                       builder: (context) => ListDemo(),
                     ));
               },
-              child: Text('次へ'),
-            )
+              child: Text('企画一覧'),
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => AnimationPractice()));
+                },
+                child: Text('アニメーション'))
           ],
         ),
       ),
