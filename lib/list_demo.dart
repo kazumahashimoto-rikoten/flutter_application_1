@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pj_detail.dart';
 
 class ListDemo extends StatelessWidget {
   const ListDemo({Key? key}) : super(key: key);
@@ -27,7 +28,10 @@ class ListDemo extends StatelessWidget {
             child: ListView.builder(
               itemCount: 10,
               itemBuilder: (BuildContext context, int index) {
-                return ListCard('ビジュアルで学ぶプログラミング${index}');
+                return ListCard(
+                  'ビジュアルで学ぶプログラミング${index}',
+                  num: 1,
+                );
               },
             )));
   }
@@ -35,8 +39,9 @@ class ListDemo extends StatelessWidget {
 
 class ListCard extends StatelessWidget {
   // const ListCard({Key? key}) : super(key: key);
-  ListCard(this.plan_title);
-  final String plan_title;
+  ListCard(this.plan_title, {required this.num});
+  final String? plan_title;
+  final int num;
 
   @override
   Widget build(BuildContext context) {
@@ -63,9 +68,9 @@ class ListCard extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    '井上研究室',
-                    style: TextStyle(fontSize: 11),
+                  Text(
+                    '井上研究室${num}hogehoge',
+                    style: const TextStyle(fontSize: 11),
                   ),
                   Container(
                     padding: const EdgeInsets.only(bottom: 5),
@@ -73,7 +78,7 @@ class ListCard extends StatelessWidget {
                     width: 200,
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      plan_title,
+                      plan_title ?? 'fffff',
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
@@ -82,7 +87,7 @@ class ListCard extends StatelessWidget {
                     ),
                   ),
                   Row(
-                    children: [
+                    children: const [
                       Icon(
                         Icons.place,
                         color: Colors.blueAccent,
@@ -108,8 +113,8 @@ class ListCard extends StatelessWidget {
                   )
                 ],
               ),
-              Spacer(),
-              FavButton(),
+              const Spacer(),
+              const FavButton(),
             ],
           ),
         ),
@@ -119,12 +124,12 @@ class ListCard extends StatelessWidget {
           elevation: 16,
         ),
         onPressed: () {
-          // Navigator.push(
-          //     context,
-          //     MaterialPageRoute(
-          //       builder: (context) => const ListDemo(),
-          //     ));
-          Navigator.pop(context);
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const PjDetail(),
+              ));
+          // Navigator.pop(context);
         },
       ),
     );
