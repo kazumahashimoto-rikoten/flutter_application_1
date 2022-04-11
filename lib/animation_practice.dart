@@ -10,45 +10,43 @@ class AnimationPractice extends StatefulWidget {
 class _AnimationPracticeState extends State<AnimationPractice> {
   double _boxleftpos = 200;
   double _hollinew = 50;
-  double _holrightpos = 100;
-  double _verlineh = 0;
-  double _endedtopup = 320;
+  bool _isFirstChanged = false;
+  bool _isSecondChanged = false;
 
   int hollinedurtime = 1;
 
-  void _onTap() {
-    setState(() {
-      _boxleftpos = -100;
-      _hollinew = 250;
-      _holrightpos = 200;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    var _screenSize = MediaQuery.of(context).size;
+
+    void _onTap() {
+      setState(() {
+        _isFirstChanged = true;
+        _boxleftpos = -100;
+        _hollinew = _screenSize.width * 0.5;
+      });
+    }
+
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('アニメーション'),
-      ),
       body: Center(
-          child: Stack(children: <Widget>[
+          child:
+              Stack(alignment: AlignmentDirectional.center, children: <Widget>[
         // 横ライン
         AnimatedPositioned(
-          top: _endedtopup,
-          right: _holrightpos,
+          top: _isSecondChanged ? -10 : _screenSize.height * 0.6,
+          right: _isFirstChanged ? _screenSize.width * 0.5 : 100,
           duration: Duration(seconds: hollinedurtime),
           onEnd: () {
             hollinedurtime = 2;
             setState(() {
-              _verlineh = 430;
-              _endedtopup = -150;
+              _isSecondChanged = true;
             });
           },
           child: AnimatedSize(
             // vsync: this,
             duration: Duration(seconds: 1),
             child: Container(
-              width: _hollinew,
+              width: _isFirstChanged ? _screenSize.width * 0.5 : 50,
               height: 10,
               color: Colors.orangeAccent,
             ),
@@ -56,38 +54,44 @@ class _AnimationPracticeState extends State<AnimationPractice> {
         ),
         // 折り返し縦ライン
         AnimatedPositioned(
-          top: _endedtopup,
-          right: 200,
+          top: _isSecondChanged ? -10 : _screenSize.height * 0.6,
+          right: _screenSize.width * 0.5,
           duration: Duration(seconds: hollinedurtime),
           child: AnimatedSize(
             duration: Duration(seconds: 2),
             child: Container(
               width: 10,
-              height: _verlineh,
+              height: _isSecondChanged ? _screenSize.height * 0.4 : 0,
               color: Colors.orangeAccent,
             ),
           ),
         ),
         // 最初のボックス
         AnimatedPositioned(
-          top: 280,
-          left: _boxleftpos,
+          top: _screenSize.height * 0.3,
+          right: _isFirstChanged
+              ? _screenSize.width
+              : (_screenSize.width - 250) / 2,
           duration: Duration(seconds: 1),
           child: Container(
-            width: 100,
-            height: 100,
+            alignment: Alignment.center,
+            width: 250,
+            height: 300,
             color: Colors.blueAccent,
+            child: Text('アニメーション前'),
           ),
         ),
         // 出てくるボックス
         AnimatedPositioned(
-          top: _endedtopup + 430,
-          right: 100,
+          top: _isSecondChanged ? _screenSize.height * 0.3 : _screenSize.height,
+          // right: 100,
           duration: Duration(seconds: 2),
           child: Container(
-            width: 200,
-            height: 150,
+            alignment: Alignment.center,
+            width: 250,
+            height: 300,
             color: Colors.blueAccent,
+            child: Text('アニメーション後'),
           ),
         ),
       ])),
