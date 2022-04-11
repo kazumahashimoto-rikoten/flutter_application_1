@@ -8,8 +8,6 @@ class AnimationPractice extends StatefulWidget {
 }
 
 class _AnimationPracticeState extends State<AnimationPractice> {
-  double _boxleftpos = 200;
-  double _hollinew = 50;
   bool _isFirstChanged = false;
   bool _isSecondChanged = false;
 
@@ -22,17 +20,15 @@ class _AnimationPracticeState extends State<AnimationPractice> {
     void _onTap() {
       setState(() {
         _isFirstChanged = true;
-        _boxleftpos = -100;
-        _hollinew = _screenSize.width * 0.5;
       });
     }
 
     return Scaffold(
       body: Center(
-          child:
-              Stack(alignment: AlignmentDirectional.center, children: <Widget>[
+          child: Stack(alignment: AlignmentDirectional.center, children: [
         // 横ライン
         AnimatedPositioned(
+          //横ラインの位置変更
           top: _isSecondChanged ? -10 : _screenSize.height * 0.6,
           right: _isFirstChanged ? _screenSize.width * 0.5 : 100,
           duration: Duration(seconds: hollinedurtime),
@@ -43,6 +39,7 @@ class _AnimationPracticeState extends State<AnimationPractice> {
             });
           },
           child: AnimatedSize(
+            //横ラインの太さ変更
             // vsync: this,
             duration: Duration(seconds: 1),
             child: Container(
@@ -77,8 +74,66 @@ class _AnimationPracticeState extends State<AnimationPractice> {
             alignment: Alignment.center,
             width: 250,
             height: 300,
-            color: Colors.blueAccent,
-            child: Text('アニメーション前'),
+            child: Column(
+              children: [
+                const Card(
+                  elevation: 3,
+                  margin: EdgeInsets.only(top: 4, bottom: 6, left: 4, right: 4),
+                  child: SizedBox(
+                    width: 250,
+                    height: 190,
+                    child: Text('アニメーション前'),
+                  ),
+                ),
+                Row(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.all(4),
+                      width: 100,
+                      height: 90,
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        child: const Text(
+                          'Yes',
+                          style: TextStyle(
+                            fontSize: 30,
+                            color: Colors.redAccent,
+                          ),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                            primary: Colors.white,
+                            side: const BorderSide(
+                              color: Colors.redAccent,
+                              width: 3,
+                            )),
+                      ),
+                    ),
+                    Spacer(),
+                    Container(
+                      margin: const EdgeInsets.all(4),
+                      width: 100,
+                      height: 90,
+                      child: ElevatedButton(
+                        onPressed: (_onTap),
+                        child: const Text(
+                          'No',
+                          style: TextStyle(
+                            fontSize: 30,
+                            color: Colors.blueAccent,
+                          ),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                            primary: Colors.white,
+                            side: const BorderSide(
+                              color: Colors.blueAccent,
+                              width: 3,
+                            )),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
           ),
         ),
         // 出てくるボックス
