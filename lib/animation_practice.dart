@@ -70,71 +70,7 @@ class _AnimationPracticeState extends State<AnimationPractice> {
               ? _screenSize.width
               : (_screenSize.width - 250) / 2,
           duration: Duration(seconds: 1),
-          child: Container(
-            alignment: Alignment.center,
-            width: 250,
-            height: 300,
-            child: Column(
-              children: [
-                const Card(
-                  elevation: 3,
-                  margin: EdgeInsets.only(top: 4, bottom: 6, left: 4, right: 4),
-                  child: SizedBox(
-                    width: 250,
-                    height: 190,
-                    child: Text('アニメーション前'),
-                  ),
-                ),
-                Row(
-                  children: [
-                    Container(
-                      margin: EdgeInsets.all(4),
-                      width: 100,
-                      height: 90,
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        child: const Text(
-                          'Yes',
-                          style: TextStyle(
-                            fontSize: 30,
-                            color: Colors.redAccent,
-                          ),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                            primary: Colors.white,
-                            side: const BorderSide(
-                              color: Colors.redAccent,
-                              width: 3,
-                            )),
-                      ),
-                    ),
-                    Spacer(),
-                    Container(
-                      margin: const EdgeInsets.all(4),
-                      width: 100,
-                      height: 90,
-                      child: ElevatedButton(
-                        onPressed: (_onTap),
-                        child: const Text(
-                          'No',
-                          style: TextStyle(
-                            fontSize: 30,
-                            color: Colors.blueAccent,
-                          ),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                            primary: Colors.white,
-                            side: const BorderSide(
-                              color: Colors.blueAccent,
-                              width: 3,
-                            )),
-                      ),
-                    ),
-                  ],
-                )
-              ],
-            ),
-          ),
+          child: qestionMethod(_onTap),
         ),
         // 出てくるボックス
         AnimatedPositioned(
@@ -145,12 +81,79 @@ class _AnimationPracticeState extends State<AnimationPractice> {
             alignment: Alignment.center,
             width: 250,
             height: 300,
-            color: Colors.blueAccent,
-            child: Text('アニメーション後'),
+            child: qestionMethod(_onTap),
           ),
         ),
       ])),
       floatingActionButton: FloatingActionButton(onPressed: _onTap),
+    );
+  }
+
+  Container qestionMethod(void _onTap()) {
+    return Container(
+      alignment: Alignment.center,
+      width: 250,
+      height: 300,
+      child: Column(
+        children: [
+          const Card(
+            elevation: 3,
+            margin: EdgeInsets.only(top: 4, bottom: 6, left: 4, right: 4),
+            child: SizedBox(
+              width: 250,
+              height: 190,
+              child: Text('アニメーション前'),
+            ),
+          ),
+          Row(
+            children: [
+              Container(
+                margin: EdgeInsets.all(4),
+                width: 100,
+                height: 90,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  child: const Text(
+                    'Yes',
+                    style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.redAccent,
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.white,
+                      side: const BorderSide(
+                        color: Colors.redAccent,
+                        width: 3,
+                      )),
+                ),
+              ),
+              const Spacer(),
+              Container(
+                margin: const EdgeInsets.all(4),
+                width: 100,
+                height: 90,
+                child: ElevatedButton(
+                  onPressed: (_onTap),
+                  child: const Text(
+                    'No',
+                    style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.blueAccent,
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.white,
+                      side: const BorderSide(
+                        color: Colors.blueAccent,
+                        width: 3,
+                      )),
+                ),
+              ),
+            ],
+          )
+        ],
+      ),
     );
   }
 }

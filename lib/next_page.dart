@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/animation_practice.dart';
+import 'package:flutter_application_1/logistic_regression.dart';
 import 'package:flutter_application_1/list_demo.dart';
+
+import 'decision_tree.dart';
 
 class NextPage extends StatelessWidget {
   const NextPage({Key? key}) : super(key: key);
@@ -55,13 +58,26 @@ class NextPage extends StatelessWidget {
               child: Text('企画一覧'),
             ),
             ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => AnimationPractice()));
-                },
-                child: Text('アニメーション'))
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => AnimationPractice()));
+              },
+              child: Text('アニメーション'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                hoge();
+              },
+              child: Text('機械学習'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                decisionTree();
+              },
+              child: Text('決定木'),
+            ),
           ],
         ),
       ),
